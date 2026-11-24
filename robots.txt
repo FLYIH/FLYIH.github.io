@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://flyih.github.io/sitemap.xml
