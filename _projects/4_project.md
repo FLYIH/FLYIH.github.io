@@ -1,80 +1,143 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
-category: fun
+title: Dungeon
+description: A text-based dungeon RPG in C++, built around an object-oriented class hierarchy.
+img: assets/img/projects/dungeon.jpg
+importance: 4
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+<style>
+  :root, html[data-theme="dark"] {
+    --global-bg-color: #121212; --global-card-bg-color: #1c1c1c; --global-text-color: #e6e6e6; --global-text-color-light: #9a9a9a;
+    --global-theme-color: #f08a24; --global-hover-color: #f08a24; --global-divider-color: rgba(255, 255, 255, 0.14);
+    --global-footer-bg-color: #0a0a0a; --global-footer-text-color: #9a9a9a; --global-footer-link-color: #e6e6e6;
+  }
+  .dg { --dg-orange: #f08a24; --dg-yellow: #e8d27c; --dg-green: #5fd35f; --dg-card: #1c1c1c; }
+  .dg, .dg p, .dg li { font-size: 1rem; line-height: 1.7; }
+  .dg-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.1rem; border: 1.5px solid var(--global-text-color); border-radius: 999px; color: var(--global-text-color); font-size: 1rem; text-decoration: none; }
+  .dg-link:hover { border-color: var(--global-theme-color); color: var(--global-theme-color); text-decoration: none; }
+  .dg-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 2rem; }
+  .dg-tag { padding: 0.15rem 0.7rem; border-radius: 999px; font-size: 0.85rem; font-weight: 600; }
+  .dg-tag.orange { background: var(--dg-orange); color: #121212; }
+  .dg-tag.yellow { background: var(--dg-yellow); color: #121212; }
+  .dg-video { margin-bottom: 2.5rem; }
+  .dg-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 8px; box-shadow: 0 0 0 1px var(--global-divider-color); }
+  .dg-meta { display: flex; flex-wrap: wrap; gap: 2.5rem; margin: 0.5rem 0 2rem; }
+  .dg-meta > div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .dg-meta .k, .dg-stack .k { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--global-text-color-light); }
+  .dg-meta .v { font-size: 1rem; font-weight: 600; color: var(--global-text-color); }
+  .dg h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--global-theme-color); margin: 2.5rem 0 1rem; }
+  .dg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .dg-card { border: 1.5px solid var(--global-text-color); border-radius: 12px; padding: 1rem 1.2rem; }
+  .dg-card h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.3rem; color: var(--global-text-color); }
+  .dg-card h3 i { margin-right: 0.35rem; color: var(--dg-yellow); }
+  .dg-card p { margin: 0; }
+  .dg code { font-size: 0.9em; background: rgba(232, 210, 124, 0.12); color: var(--dg-yellow); padding: 0.05rem 0.35rem; border-radius: 4px; }
+  .dg-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; max-width: 520px; }
+  .dg-room { border: 1.5px solid var(--global-text-color-light); border-radius: 6px; padding: 0.6rem 0.4rem; text-align: center; font-size: 0.9rem; font-weight: 600; }
+  .dg-room small { display: block; font-weight: 400; font-size: 0.78rem; color: var(--global-text-color-light); }
+  .dg-room.start { border-color: var(--dg-green); color: var(--dg-green); }
+  .dg-room.goal { border-color: var(--dg-orange); color: var(--dg-orange); }
+  .dg-room.empty { border: none; }
+  .dg-challenge { padding: 1rem 0; border-bottom: 1px solid var(--global-divider-color); }
+  .dg-challenge:last-child { border-bottom: none; }
+  .dg-challenge .q { font-weight: 600; margin-bottom: 0.2rem; }
+  .dg-challenge .a::before { content: "→ "; color: var(--dg-orange); font-weight: 700; }
+  .dg-stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .dg-stack > div { display: flex; flex-direction: column; align-items: flex-start; gap: 0.4rem; background: var(--dg-card); border-radius: 12px; padding: 0.9rem 1.1rem; }
+  .dg-stack .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+  .dg-future { padding-left: 1.2rem; margin: 0; }
+  @media (max-width: 700px) { .dg-grid { grid-template-columns: 1fr; } .dg-stack { grid-template-columns: repeat(2, 1fr); } }
+</style>
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+<div class="dg">
+  <a class="dg-link" href="https://github.com/FLYIH/Dungeon" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> FLYIH/Dungeon</a>
+  <div class="dg-tags">
+    <span class="dg-tag orange">C++</span>
+    <span class="dg-tag yellow">OOP</span>
   </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+  <div class="dg-video">
+    <iframe src="https://www.youtube-nocookie.com/embed/OtjqpSCZ_hk?rel=0" title="Dungeon demo" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
+  </div>
+  <div class="dg-meta">
+    <div><span class="k">Team</span><span class="v">Solo</span></div>
+    <div><span class="k">Platform</span><span class="v">Terminal</span></div>
+  </div>
+  <h2>Overview</h2>
+  <p>
+    <strong>Dungeon</strong> is a terminal RPG in which a warrior explores ten connected rooms, fights monsters, trades with NPCs,
+    and manages hunger, thirst, and poison while searching for the way out. Every game element derives from a single
+    <code>Object</code> base class with a virtual <code>triggerEvent()</code>, so rooms can hold any mix of monsters, NPCs, items,
+    and environments and run them polymorphically. Some rooms run a background timer thread that keeps draining the player's stats in real time.
+  </p>
+  <h2>The Map</h2>
+  <div class="dg-map">
+    <div class="dg-room">West Town<small>lottery</small></div>
+    <div class="dg-room">East Town<small>bounty</small></div>
+    <div class="dg-room">Forest<small>hunt &amp; lake</small></div>
+    <div class="dg-room">Hotel<small>map</small></div>
+    <div class="dg-room">Cave<small>sword</small></div>
+    <div class="dg-room goal">Secret<small>exit</small></div>
+    <div class="dg-room">Desert<small>oasis / storm</small></div>
+    <div class="dg-room start">Start Place<small>spawn</small></div>
+    <div class="dg-room">Lab<small>quiz</small></div>
+    <div class="dg-room empty"></div>
+    <div class="dg-room">Swamp<small>mummy</small></div>
+    <div class="dg-room empty"></div>
+  </div>
+  <p style="margin-top: 1rem">
+    To win, the player earns the password in the Lab, unlocks the Secret room, takes the milk antidote, and walks out.
+  </p>
+  <h2>Game Systems</h2>
+  <div class="dg-grid">
+    <div class="dg-card">
+      <h3><i class="fa-solid fa-khanda"></i> Turn-based Combat</h3>
+      <p>The player strikes first and picks a skill each turn. Skills cost MP, and three are unlocked through quests; monsters choose skills at random, and some lower the player's attack or defense or inflict poison. The player can flee, and the monster keeps its state for the next encounter.</p>
+    </div>
+    <div class="dg-card">
+      <h3><i class="fa-solid fa-utensils"></i> Survival</h3>
+      <p>Hunger and thirst rise by 2 with every action; at the cap of 50 the player starts losing health, and thirst also lowers attack. Food and water come from NPCs, monsters, and the lake.</p>
+    </div>
+    <div class="dg-card">
+      <h3><i class="fa-solid fa-skull-crossbones"></i> Poison</h3>
+      <p>Three poison types, each with its own damage per move and duration. Players can wait it out, find the milk, or trade captured animals for an antidote.</p>
+    </div>
+    <div class="dg-card">
+      <h3><i class="fa-solid fa-hourglass-half"></i> Real-time Environments</h3>
+      <p>Desert, forest, and swamp start a background timer that raises hunger or thirst every 10 seconds until the room's event ends. In the swamp, the player must press space within two seconds to escape.</p>
+    </div>
+    <div class="dg-card">
+      <h3><i class="fa-solid fa-store"></i> NPCs &amp; Items</h3>
+      <p>NPCs run lotteries, sell goods, and pose quiz questions. Items are one-time or permanent; permanent items go into the backpack and can be equipped during fights.</p>
+    </div>
+    <div class="dg-card">
+      <h3><i class="fa-solid fa-floppy-disk"></i> Save &amp; Load</h3>
+      <p>Character data is saved to file and restored, and character stats, the map, and ASCII art are loaded from files.</p>
+    </div>
+  </div>
+  <h2>Challenges &amp; Solutions</h2>
+  <div class="dg-challenge">
+    <div class="q">Circular includes between <code>Player</code> and <code>Poison</code></div>
+    <div class="a">Each header included the other, so the build failed. Moving the <code>player.h</code> include from <code>poison.h</code> into <code>poison.cpp</code> broke the cycle.</div>
+  </div>
+  <div class="dg-challenge">
+    <div class="q">Draining stats in real time while waiting for input</div>
+    <div class="a">Ran a timer in a <code>std::thread</code> that checks elapsed time with <code>std::chrono</code> and stops through a <code>std::atomic&lt;bool&gt;</code> flag once the room's event is done.</div>
+  </div>
+  <div class="dg-challenge">
+    <div class="q">Robust terminal input</div>
+    <div class="a">Validated almost every prompt and re-asked on invalid input, and used ANSI escape codes to color and bold key messages.</div>
+  </div>
+  <h2>Future Work</h2>
+  <ul class="dg-future">
+    <li>A clearer storyline connecting the rooms</li>
+    <li>Saving room state, not just character data</li>
+  </ul>
+  <h2>Tech Stack</h2>
+  <div class="dg-stack">
+    <div><span class="k">Language</span><div class="tags"><span class="dg-tag orange">C++</span></div></div>
+    <div><span class="k">Design</span><div class="tags"><span class="dg-tag yellow">OOP</span><span class="dg-tag yellow">UML</span></div></div>
+    <div><span class="k">Concurrency</span><div class="tags"><span class="dg-tag orange">std::thread</span><span class="dg-tag orange">atomic</span></div></div>
+    <div><span class="k">Terminal</span><div class="tags"><span class="dg-tag yellow">ANSI Escapes</span><span class="dg-tag yellow">File I/O</span></div></div>
   </div>
 </div>
-```
-
-{% endraw %}

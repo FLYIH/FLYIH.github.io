@@ -16,6 +16,9 @@ output/playwright/
 test-results/
 vendor
 
-# Python bytecode from bin/ helper scripts
+# Local source code kept out of the site repo
+Compai/
+
+# Python bytecode
 __pycache__/
 *.pyc

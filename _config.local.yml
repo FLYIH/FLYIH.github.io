@@ -1,0 +1,6 @@
+# Local-only overrides, layered on top of _config.yml:
+#   bundle exec jekyll serve --config _config.yml,_config.local.yml
+# Not used by the GitHub Actions deploy.
+
+imagemagick:
+  enabled: false # ImageMagick `convert` is not installed on this machine
