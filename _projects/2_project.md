@@ -2,6 +2,7 @@
 layout: page
 title: Compai
 description: A RAG companion chatbot on Telegram that adapts to a chosen speaker's style.
+img: assets/img/projects/compai.jpg
 importance: 2
 ---
 
@@ -20,8 +21,6 @@ importance: 2
   .cp-tag.apricot { background: var(--cp-apricot); color: var(--cp-ink); }
   .cp-video { margin-bottom: 2.5rem; }
   .cp-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 8px; box-shadow: 0 2px 10px rgba(61, 42, 51, 0.18); }
-  .cp-video-placeholder { aspect-ratio: 16 / 9; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 0.5rem; border-radius: 8px; border: 2px dashed rgba(61, 42, 51, 0.3); background: var(--cp-blush); color: var(--cp-ink); font-weight: 500; }
-  .cp-video-placeholder i { font-size: 2rem; }
   .cp-meta { display: flex; flex-wrap: wrap; gap: 2.5rem; margin: 0.5rem 0 2rem; }
   .cp-meta > div { display: flex; flex-direction: column; gap: 0.15rem; }
   .cp-meta .k, .cp-stack .k { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--global-text-color-light); }
@@ -53,7 +52,7 @@ importance: 2
     <span class="cp-tag apricot">RAG</span>
   </div>
   <div class="cp-video">
-    <div class="cp-video-placeholder"><i class="fa-regular fa-circle-play"></i>Demo video coming soon</div>
+    <iframe src="https://www.youtube-nocookie.com/embed/54qxNNAtHT0?rel=0" title="Compai demo" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
   </div>
   <div class="cp-meta">
     <div><span class="k">Timeline</span><span class="v">2025.02 – 2025.03</span></div>

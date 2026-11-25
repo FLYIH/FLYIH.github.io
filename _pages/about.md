@@ -14,18 +14,23 @@ permalink: /
   .home-name-zh { font-size: 1.5rem; font-weight: 500; letter-spacing: 0.05em; margin-left: 0.4rem; color: var(--global-text-color-light); }
   .home-bio { font-size: 1rem; line-height: 1.75; color: var(--global-text-color); }
   .home-bio strong { font-weight: 700; }
+  .home-bio a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat; padding-bottom: 1px; transition: background-size 0.25s ease; }
+  .home-bio a:hover { background-size: 100% 1.5px; }
   .home-photo img { width: 200px; height: 250px; object-fit: cover; border-radius: 50% / 42%; border: 4px solid var(--global-bg-color); box-shadow: 0 0 0 2px var(--global-theme-color); }
   .home-photo { text-align: center; }
   .home-location { margin-top: 0.75rem; font-family: "JetBrains Mono", ui-monospace, Consolas, monospace; font-size: 0.85rem; color: var(--global-text-color-light); }
   .home-links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
   .home-links a { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.4rem 0.95rem; border: 1.5px solid var(--global-text-color); border-radius: 999px; font-size: 1rem; font-weight: 400; color: var(--global-text-color); transition: all 0.15s ease; }
   .home-links a:hover { border-color: var(--global-theme-color); color: var(--global-theme-color); }
+  @media (prefers-reduced-motion: reduce) {
+    .home-bio a { transition: none; }
+  }
   .home-section { margin-top: 3.5rem; }
   .home-section h2 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: var(--global-theme-color); margin-bottom: 1.25rem; }
-  .home-timeline { list-style: none; padding: 0; margin: 0; border-left: 2px solid var(--global-divider-color); }
-  .home-timeline li { position: relative; padding: 0 0 1.4rem 1.4rem; }
+  .home-timeline { list-style: none; padding: 0; margin: 0; }
+  .home-timeline li { display: flex; align-items: center; gap: 1rem; padding-bottom: 1.25rem; }
   .home-timeline li:last-child { padding-bottom: 0; }
-  .home-timeline li::before { content: ""; position: absolute; left: -7px; top: 0.4rem; width: 12px; height: 12px; border-radius: 50%; background: var(--global-bg-color); border: 2px solid var(--global-theme-color); }
+  .home-timeline .logo { width: 44px; height: 44px; flex-shrink: 0; object-fit: contain; }
   .home-timeline .org { font-weight: 600; color: var(--global-text-color); }
   .home-timeline .detail { font-size: 0.92rem; color: var(--global-text-color-light); }
   @media (max-width: 700px) {
@@ -64,11 +69,17 @@ permalink: /
     <h2>Education</h2>
     <ul class="home-timeline">
       <li>
-        <div class="org">National Yang Ming Chiao Tung University</div>
-        <div class="detail">B.S. in Computer Science</div>
+        <img class="logo" src="{{ 'assets/img/logos/nycu.png' | relative_url }}" alt="NYCU logo">
+        <div>
+          <div class="org">National Yang Ming Chiao Tung University</div>
+          <div class="detail">B.S. in Computer Science</div>
+        </div>
       </li>
       <li>
-        <div class="org">National Experimental High School at Hsinchu Science Park</div>
+        <img class="logo" src="{{ 'assets/img/logos/nehs.png' | relative_url }}" alt="NEHS logo">
+        <div>
+          <div class="org">National Experimental High School at Hsinchu Science Park</div>
+        </div>
       </li>
     </ul>
   </section>
